@@ -53,9 +53,15 @@ public class Board {
         return !(state[index] == ' ');
     }
 
+    public boolean isValidMove(int index) {
+        return (index >= 0 && index <= 8)
+                && (!isPositionTaken(index));
+    }
+
     public void placeToken(int index, char token) {
         state[index] = token;
     }
+
 
 
 }

@@ -16,10 +16,7 @@ public class TicTacToe {
         String input = getInput();
     }
 
-    public boolean isValidMove(int index) {
-        return (index >= 0 && index <= 8)
-                    && (!board.isPositionTaken(index));
-    }
+
 
     public char currentPlayer() {
         char token;
