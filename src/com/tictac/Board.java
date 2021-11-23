@@ -18,13 +18,27 @@ public class Board {
             {0, 4, 9},
             {2, 4, 6}
     };
-    public char[] layout;
+    public char[] state;
 
     public Board() {
         char[] board = new char[9];
         Arrays.fill(board,' ');
-        this.layout = board;
+        this.state = board;
     };
+
+    public Board(char[] board) throws Exception {
+        if (board.length != 9)
+            throw new Exception("Board must have 9 spaces.");
+        this.state = board;
+    }
+
+    public void display() {
+        System.out.println(String.format(" %c | %c | %c", this.state[0], this.state[1], this.state[2]));
+        System.out.println("-----------");
+        System.out.println(String.format(" %c | %c | %c", this.state[3], this.state[4], this.state[5]));
+        System.out.println("-----------");
+        System.out.println(String.format(" %c | %c | %c", this.state[6], this.state[7], this.state[8]));
+    }
 
 
 }
