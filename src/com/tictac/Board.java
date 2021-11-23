@@ -45,4 +45,8 @@ public class Board {
         System.out.println(String.format(" %c | %c | %c", this.state[6], this.state[7], this.state[8]));
     }
 
+    public boolean positionIsTaken(int index) {
+        return !(state[index] == ' ');
+    }
+
 }

@@ -17,6 +17,15 @@ public class TicTacToe {
         String input = getInput();
     }
 
+    public char currentPlayer() {
+        char token;
+        if (turnCount % 2 == 0)
+            token = 'X';
+        else
+            token = 'O';
+        return token;
+    }
+
     public void promptPlayer() {
         System.out.println("Please enter 1 - 9:");
     }
