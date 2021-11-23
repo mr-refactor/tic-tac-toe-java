@@ -18,18 +18,23 @@ public class Board {
             {0, 4, 9},
             {2, 4, 6}
     };
+    private static char[] EMPTY_BOARD = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+
     public char[] state;
 
     public Board() {
-        char[] board = new char[9];
-        Arrays.fill(board,' ');
-        this.state = board;
+        state = EMPTY_BOARD;
     };
 
     public Board(char[] board) throws Exception {
-        if (board.length != 9)
-            throw new Exception("Board must have 9 spaces.");
-        this.state = board;
+        try {
+            if (board.length != 9)
+                throw new Exception("Board must have 9 spaces. Initializing with an empty board.");
+            state = board;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            state = EMPTY_BOARD;
+        }
     }
 
     public void display() {
@@ -39,6 +44,5 @@ public class Board {
         System.out.println("-----------");
         System.out.println(String.format(" %c | %c | %c", this.state[6], this.state[7], this.state[8]));
     }
-
 
 }
