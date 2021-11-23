@@ -9,12 +9,16 @@ public class TicTacToe {
 
     public TicTacToe() {
         board = new Board();
-        turnCount = 0;
     }
 
     public void turn() {
         promptPlayer();
         String input = getInput();
+    }
+
+    public boolean isValidMove(int index) {
+        return (index >= 0 && index <= 8)
+                    && (!board.isPositionTaken(index));
     }
 
     public char currentPlayer() {
@@ -26,6 +30,13 @@ public class TicTacToe {
         return token;
     }
 
+    // TODO: better function name
+    public void handlePlayerInput() {
+        promptPlayer();
+        String input = getInput();
+        int index = inputToIndex(input);
+    }
+
     public void promptPlayer() {
         System.out.println("Please enter 1 - 9:");
     }
@@ -33,5 +44,9 @@ public class TicTacToe {
     public String getInput() {
        String input = playerInput.nextLine();
        return input;
+    }
+
+    public int inputToIndex(String input) {
+        return Integer.parseInt(input) - 1;
     }
 }

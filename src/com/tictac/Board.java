@@ -29,7 +29,8 @@ public class Board {
     public Board(char[] board) throws Exception {
         try {
             if (board.length != 9)
-                throw new Exception("Board must have 9 spaces. Initializing with an empty board.");
+                throw new Exception("Board must have 9 spaces. " +
+                        "Initializing with an empty board.");
             state = board;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -38,15 +39,23 @@ public class Board {
     }
 
     public void display() {
-        System.out.println(String.format(" %c | %c | %c", this.state[0], this.state[1], this.state[2]));
+        System.out.println(String.format(" %c | %c | %c",
+                this.state[0], this.state[1], this.state[2]));
         System.out.println("-----------");
-        System.out.println(String.format(" %c | %c | %c", this.state[3], this.state[4], this.state[5]));
+        System.out.println(String.format(" %c | %c | %c",
+                this.state[3], this.state[4], this.state[5]));
         System.out.println("-----------");
-        System.out.println(String.format(" %c | %c | %c", this.state[6], this.state[7], this.state[8]));
+        System.out.println(String.format(" %c | %c | %c",
+                this.state[6], this.state[7], this.state[8]));
     }
 
-    public boolean positionIsTaken(int index) {
+    public boolean isPositionTaken(int index) {
         return !(state[index] == ' ');
     }
+
+    public void placeToken(int index, char token) {
+        state[index] = token;
+    }
+
 
 }
