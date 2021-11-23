@@ -62,6 +62,40 @@ public class Board {
         state[index] = token;
     }
 
+    public boolean gameIsOver() {
+        return gameIsADraw() || gameIsWon();
+    }
+
+    public boolean gameIsADraw() {
+        return !gameIsWon() && isFull();
+    }
+
+    public boolean gameIsWon() {
+        for (int[] combo : WIN_COMBINATIONS ) {
+            if (isPositionTaken(combo[0])
+                    && allTokensMatch(combo))
+                return true;
+        }
+        return false;
+    }
+
+    private boolean allTokensMatch(int[] winCombo) {
+        return state[winCombo[0]] == state[winCombo[1]]
+                && state[winCombo[1]] == state[winCombo[2]];
+    }
+
+    /* TODO: Determine if there is a way to use isPositionTaken() here
+        instead of if space == ' ' */
+    private boolean isFull() {
+        for (char space : state) {
+            if (space == ' ')
+                return false;
+        }
+        return true;
+    }
+
+
+
 
 
 }

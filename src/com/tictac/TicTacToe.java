@@ -16,8 +16,6 @@ public class TicTacToe {
         String input = getInput();
     }
 
-
-
     public char currentPlayer() {
         char token;
         if (turnCount % 2 == 0)
