@@ -33,7 +33,9 @@ public class Board {
     private static void validateContent(char[] stateOfBoardInProgress) throws Exception {
         for (char space : stateOfBoardInProgress) {
             // TODO: check for syntax like if space not in [' ', 'X', 'O']
-            if (space != ' ' || space != 'X' || space != 'O')
+            if (space == ' ' || space == 'X' || space == 'O')
+                continue;
+            else
                 throw new Exception("The board cannot contain characters other than ' ', 'X', or 'O'");
         }
     }
