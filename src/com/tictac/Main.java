@@ -3,9 +3,7 @@ package com.tictac;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        TicTacToe game = new TicTacToe();
-        game.play();
-        TicTacToe newGame = new TicTacToe();
-        newGame.play();
+        char[] board = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+        Board inProgress = new Board(board);
     }
 }

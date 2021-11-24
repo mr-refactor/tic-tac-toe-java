@@ -1,6 +1,7 @@
 package com.tictac;
 
 public class Board {
+    private static final char[] EMPTY_BOARD = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
     private static final int[][] WIN_COMBINATIONS = {
             // Horizontal Wins
             {0, 1, 2},
@@ -16,24 +17,44 @@ public class Board {
             {0, 4, 8},
             {2, 4, 6}
     };
-    private static char[] EMPTY_BOARD = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
 
-    public char[] state;
+    private char[] state;
+
+    private static void validateBoard(char[] stateOfBoardInProgress) throws Exception {
+        Board.validateLength(stateOfBoardInProgress);
+        Board.validateContent(stateOfBoardInProgress);
+    }
+
+    private static void validateLength(char[] stateOfBoardInProgress) throws Exception {
+        if (stateOfBoardInProgress.length != 9)
+            throw new Exception("The board must have exactly 9 spaces.");
+    }
+
+    private static void validateContent(char[] stateOfBoardInProgress) throws Exception {
+        for (char space : stateOfBoardInProgress) {
+            // TODO: check for syntax like if space not in [' ', 'X', 'O']
+            if (space != ' ' || space != 'X' || space != 'O')
+                throw new Exception("The board cannot contain characters other than ' ', 'X', or 'O'");
+        }
+    }
 
     public Board() {
         state = EMPTY_BOARD.clone();
     };
 
-    public Board(char[] board) throws Exception {
+    // TODO: Decide to add setStateFromBoardInProgress
+    public Board(char[] stateOfBoardInProgress) throws Exception {
         try {
-            if (board.length != 9)
-                throw new Exception("Board must have 9 spaces. " +
-                        "Initializing with an empty board.");
-            state = board;
+            setStateFromBoardInProgress(stateOfBoardInProgress);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() + "\nStarting game with an empty board.");
             state = EMPTY_BOARD.clone();
         }
+    }
+
+    public void setStateFromBoardInProgress(char[] stateOfBoardInProgress) throws Exception {
+        Board.validateBoard(stateOfBoardInProgress);
+        state = stateOfBoardInProgress;
     }
 
     public void display() {
