@@ -44,7 +44,6 @@ public class Board {
         state = EMPTY_BOARD.clone();
     };
 
-    // TODO: Decide to add setStateFromBoardInProgress
     public Board(char[] stateOfBoardInProgress) throws Exception {
         try {
             setStateFromBoardInProgress(stateOfBoardInProgress);
