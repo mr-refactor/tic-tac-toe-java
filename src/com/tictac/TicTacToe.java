@@ -55,6 +55,7 @@ public class TicTacToe {
         System.out.println("Please enter 1 - 9:");
     }
 
+    // TODO: Validate input
     public String getInput() {
        String input = playerInput.nextLine();
        return input;

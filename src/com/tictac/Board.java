@@ -1,9 +1,7 @@
 package com.tictac;
 
-import java.util.Arrays;
-
 public class Board {
-    private static int[][] WIN_COMBINATIONS = {
+    private static final int[][] WIN_COMBINATIONS = {
             // Horizontal Wins
             {0, 1, 2},
             {3, 4, 5},
@@ -23,7 +21,7 @@ public class Board {
     public char[] state;
 
     public Board() {
-        state = EMPTY_BOARD;
+        state = EMPTY_BOARD.clone();
     };
 
     public Board(char[] board) throws Exception {
@@ -34,7 +32,7 @@ public class Board {
             state = board;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            state = EMPTY_BOARD;
+            state = EMPTY_BOARD.clone();
         }
     }
 
