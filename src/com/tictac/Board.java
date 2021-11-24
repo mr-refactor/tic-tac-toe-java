@@ -17,7 +17,6 @@ public class Board {
             {0, 4, 8},
             {2, 4, 6}
     };
-
     private char[] state;
 
     private static void validateBoard(char[] stateOfBoardInProgress) throws Exception {
@@ -48,14 +47,19 @@ public class Board {
         try {
             setStateFromBoardInProgress(stateOfBoardInProgress);
         } catch (Exception e) {
-            System.out.println(e.getMessage() + "\nStarting game with an empty board.");
-            state = EMPTY_BOARD.clone();
+            System.out.println(e.getMessage());
+            setStateToDefaultBoard();
         }
     }
 
-    public void setStateFromBoardInProgress(char[] stateOfBoardInProgress) throws Exception {
+    private void setStateFromBoardInProgress(char[] stateOfBoardInProgress) throws Exception {
         Board.validateBoard(stateOfBoardInProgress);
         state = stateOfBoardInProgress;
+    }
+
+    private void setStateToDefaultBoard() {
+        System.out.println("Starting game with an empty board.");
+        state = EMPTY_BOARD.clone();
     }
 
     public void display() {
@@ -69,13 +73,13 @@ public class Board {
                 this.state[6], this.state[7], this.state[8]));
     }
 
-    public boolean isPositionTaken(int index) {
-        return !(state[index] == ' ');
-    }
-
     public boolean isValidMove(int index) {
         return (index >= 0 && index <= 8)
                 && (!isPositionTaken(index));
+    }
+
+    public boolean isPositionTaken(int index) {
+        return !(state[index] == ' ');
     }
 
     public void placeToken(int index, char token) {
@@ -107,15 +111,10 @@ public class Board {
     /* TODO: Determine if there is a way to use isPositionTaken() here
         instead of if space == ' ' */
     private boolean isFull() {
-        for (char space : state) {
-            if (space == ' ')
+        for (int i = 0; i < state.length; i++) {
+            if (!isPositionTaken(i))
                 return false;
         }
         return true;
     }
-
-
-
-
-
 }

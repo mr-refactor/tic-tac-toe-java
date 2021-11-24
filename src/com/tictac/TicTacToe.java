@@ -22,6 +22,7 @@ public class TicTacToe {
             System.out.println("Cat's Game");
     }
 
+    // TODO: Fix recursion to stop duplicate board / turnCount for invalid entries
     public void turn() {
         int index = getMoveFromPlayer();
         if (board.isValidMove(index)) {
