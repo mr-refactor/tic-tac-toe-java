@@ -63,14 +63,14 @@ public class Board {
     }
 
     public void display() {
-        System.out.println(String.format(" %c | %c | %c",
-                this.state[0], this.state[1], this.state[2]));
+        System.out.printf(" %c | %c | %c\n",
+                this.state[0], this.state[1], this.state[2]);
         System.out.println("-----------");
-        System.out.println(String.format(" %c | %c | %c",
-                this.state[3], this.state[4], this.state[5]));
+        System.out.printf(" %c | %c | %c\n",
+                this.state[3], this.state[4], this.state[5]);
         System.out.println("-----------");
-        System.out.println(String.format(" %c | %c | %c",
-                this.state[6], this.state[7], this.state[8]));
+        System.out.printf(" %c | %c | %c\n",
+                this.state[6], this.state[7], this.state[8]);
     }
 
     public boolean isValidMove(int index) {
