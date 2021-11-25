@@ -22,7 +22,7 @@ public class TicTacToe {
             System.out.println("Cat's Game");
     }
 
-    public void turn() {
+    private void turn() {
         int index = getMoveFromPlayer();
         if (board.isValidMove(index)) {
             char token = currentPlayer();
@@ -37,7 +37,7 @@ public class TicTacToe {
     }
 
     // TODO: Write a function that somehow combines currentPlayer and LastPlayer
-    public char currentPlayer() {
+    private char currentPlayer() {
         char token;
         if (turnCount % 2 == 0)
             token = 'X';
@@ -47,13 +47,13 @@ public class TicTacToe {
     }
 
     // TODO: better function name
-    public int getMoveFromPlayer() {
+    private int getMoveFromPlayer() {
         int input = getInput();
         return inputToIndex(input);
     }
 
     // TODO: Validate input
-    public int getInput() {
+    private int getInput() {
        int input;
         do {
             promptPlayer();
@@ -69,11 +69,11 @@ public class TicTacToe {
        return input;
     }
 
-    public void promptPlayer() {
+    private void promptPlayer() {
         System.out.print("Please enter a number 1 - 9: ");
     }
 
-    public int inputToIndex(int input) {
+    private int inputToIndex(int input) {
         return input - 1;
     }
 }
