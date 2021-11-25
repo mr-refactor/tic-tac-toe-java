@@ -46,36 +46,32 @@ public class TicTacToe {
 
     // TODO: better function name
     public int getMoveFromPlayer() {
-        promptPlayer();
-        String input = getInput();
-        try {
-            validateInput(input);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            getMoveFromPlayer();
-        }
+        int input = getInput();
         return inputToIndex(input);
     }
 
-    public void promptPlayer() {
-        System.out.println("Please enter 1 - 9:");
-    }
-
     // TODO: Validate input
-    public String getInput() {
-       String input = playerInput.nextLine();
+    public int getInput() {
+       int input;
+        do {
+            promptPlayer();
+            while (!playerInput.hasNextInt()) {
+                String invalidInput = playerInput.next();
+                System.out.printf("\"%s\" is not a number. ", invalidInput);
+                promptPlayer();
+            }
+            input = playerInput.nextInt();
+            if (input < 1 || input > 9)
+                System.out.printf("\"%d\" is out of range. ", input);
+        } while (input < 1 || input > 9);
        return input;
     }
 
-    //TODO: clean up this try block once exceptions are understood better in Java
-    private void validateInput(String input) throws Exception {
-        if(input.length() != 1)
-            throw new Exception("Invalid Input. Must be a number between 1 - 9.");
-        else if (!Character.isDigit(input.charAt(0)));
-            throw new Exception("Invalid Input. Must be a number between 1 - 9.");
+    public void promptPlayer() {
+        System.out.print("Please enter a number 1 - 9: ");
     }
 
-    public int inputToIndex(String input) {
-        return Integer.parseInt(input) - 1;
+    public int inputToIndex(int input) {
+        return input - 1;
     }
 }
