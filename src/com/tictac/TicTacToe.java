@@ -17,7 +17,7 @@ public class TicTacToe {
             turn();
 
         if (board.gameIsWon())
-            System.out.println("Congratulations " + currentPlayer() + "!");
+            System.out.println("Congratulations " + winner() + "!");
         else if (board.gameIsADraw())
             System.out.println("Cat's Game");
     }
@@ -46,13 +46,18 @@ public class TicTacToe {
         return token;
     }
 
-    // TODO: better function name
+    /* TODO: refine method so it isn't so much of a hack (we have to decrement turnCount
+    so that currentPlayer will return the token of the last player) */
+    private char winner() {
+        turnCount -= 1;
+        return currentPlayer();
+    }
+
     private int getMoveFromPlayer() {
         int input = getInput();
         return inputToIndex(input);
     }
 
-    // TODO: Validate input
     private int getInput() {
        int input;
         do {
