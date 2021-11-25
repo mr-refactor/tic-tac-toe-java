@@ -30,6 +30,8 @@ public class TicTacToe {
             turnCount += 1;
             board.display();
         } else {
+            // TODO: find better flow for improper inputs in turn()
+            System.out.print("Sorry, that space is already taken. ");
             turn();
         }
     }

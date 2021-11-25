@@ -108,8 +108,6 @@ public class Board {
                 && state[winCombo[1]] == state[winCombo[2]];
     }
 
-    /* TODO: Determine if there is a way to use isPositionTaken() here
-        instead of if space == ' ' */
     private boolean isFull() {
         for (int i = 0; i < state.length; i++) {
             if (!isPositionTaken(i))
